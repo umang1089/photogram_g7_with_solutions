@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
 
     @current_count = Photo.count
 
-    render("pic_templates/create_row.html.erb")
+    redirect_to("/photos")
   end
 
   def index
@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
 
     @the_id = p.id
 
-    render("pic_templates/update_row.html.erb")
+    redirect_to("/photos/#{@the_id}")
   end
 
   def destroy_row
@@ -58,6 +58,6 @@ class PicturesController < ApplicationController
       `rails db:seed`
     end
 
-    render("pic_templates/destroy_row.html.erb")
+    redirect_to("/photos")
   end
 end
