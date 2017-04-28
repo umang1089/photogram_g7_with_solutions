@@ -54,10 +54,6 @@ class PicturesController < ApplicationController
 
     @remaining_count = Photo.count
 
-    if @remaining_count == 0
-      `rails db:seed`
-    end
-
     redirect_to("/photos")
   end
 end
