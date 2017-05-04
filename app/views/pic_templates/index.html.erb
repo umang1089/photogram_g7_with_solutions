@@ -1,1 +1,17 @@
-<h1>Hi index</h1>
+<h1>All Photos</h1>
+
+
+<a href="/photos/new.html">Add a new photo</a>
+
+
+<!-- Grab an array of all photos, and for each, loop through and show stuff -->
+<% @all_photos.each do |the_photo| %>
+  <div class="thumbnail">
+    <img src=" <%= the_photo.source %>">
+
+    <a class="btn btn-default btn-block" href="/photos/<%= the_photo.id %>">Show Details</a>
+    <a class="btn btn-default btn-block" href="/photos/<%= the_photo.id %>/edit"> Edit</a>
+    <a class="btn btn-default btn-block" href="#">Delete</a>
+  </div>
+
+<% end %>

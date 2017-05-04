@@ -8,10 +8,21 @@ class PicturesController < ApplicationController
   end
 
   def index
+    @all_photos = Photo.order({:created_at => :desc})
     render("pic_templates/index.html.erb")
   end
 
   def show
+    # The params hash looks like this: {"the_id_number"=>"1"}
+
+    id_number = params["the_id"]
+
+    p = Photo.find(id_number)
+
+    @the_caption = p.caption
+    @the_image_url = p.source
+    @created_at = p.created_at
+
     render("pic_templates/show.html.erb")
   end
 
