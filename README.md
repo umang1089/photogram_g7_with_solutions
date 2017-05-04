@@ -230,7 +230,7 @@ It's been a while since we've done any forms, but let's shake off the rust and c
 <form action="/create_photo">
   <div>
     <label for="source_input">
-      Image URL
+      Source
     </label>
 
     <input id="source_input" type="text" name="the_source">
