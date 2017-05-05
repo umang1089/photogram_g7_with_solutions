@@ -32,11 +32,19 @@ class PicturesController < ApplicationController
   end
 
   def edit_form
+    @the_photo_to_be_edited = Photo.find(params[:la_id])
+
     render("pic_templates/edit_form.html.erb")
   end
 
   def update_row
-    render("pic_templates/update_row.html.erb")
+    p = Photo.find(params[:le_id])
+
+    p.caption = params[:the_caption]
+    p.source = params[:the_source]
+    p.save
+
+    redirect_to("/photos/"+params[:le_id])
   end
 
   def destroy_row
