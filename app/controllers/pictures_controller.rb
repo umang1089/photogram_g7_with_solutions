@@ -4,7 +4,12 @@ class PicturesController < ApplicationController
   end
 
   def create_row
-    render("pic_templates/create_row.html.erb")
+    p = Photo.new
+    p.source = params["the_source"]
+    p.caption = params["the_caption"]
+    p.save
+
+    redirect_to("/photos")
   end
 
   def index
@@ -15,9 +20,9 @@ class PicturesController < ApplicationController
   def show
     # The params hash looks like this: {"the_id_number"=>"1"}
 
-    id_number = params["the_id"]
+    @id_number = params["the_id"]
 
-    p = Photo.find(id_number)
+    p = Photo.find(@id_number)
 
     @the_caption = p.caption
     @the_image_url = p.source
@@ -35,6 +40,11 @@ class PicturesController < ApplicationController
   end
 
   def destroy_row
-    render("pic_templates/destroy_row.html.erb")
+    id_number = params["da_id"]
+
+    p = Photo.find(id_number)
+    p.destroy
+
+    redirect_to("/photos")
   end
 end
